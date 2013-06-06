@@ -1,0 +1,81 @@
+<?php
+
+namespace Site\SavalizeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Company
+ *
+ * @ORM\Table(name="company")
+ * @ORM\Entity
+ */
+class Company
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=20, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="password", type="integer", nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=30, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telphone", type="string", length=15, nullable=false)
+     */
+    private $telphone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=20, nullable=false)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=20, nullable=false)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=20, nullable=false)
+     */
+    private $region;
+
+
+}

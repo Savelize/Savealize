@@ -1,0 +1,60 @@
+<?php
+
+namespace Site\SavalizeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Brand
+ *
+ * @ORM\Table(name="brand")
+ * @ORM\Entity
+ */
+class Brand
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="confirmed", type="blob", nullable=false)
+     */
+    private $confirmed;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_deleted", type="blob", nullable=false)
+     */
+    private $isDeleted;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="brand")
+     */
+    private $product;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>UserAccount</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fname</th>
+                <td>{{ entity.fname }}</td>
+            </tr>
+            <tr>
+                <th>Lname</th>
+                <td>{{ entity.lname }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ entity.country }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ entity.region }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ entity.age }}</td>
+            </tr>
+            <tr>
+                <th>Martalstatus</th>
+                <td>{{ entity.martalStatus }}</td>
+            </tr>
+            <tr>
+                <th>Car</th>
+                <td>{{ entity.car }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ entity.salary }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('useraccount') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('useraccount_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('useraccount_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
