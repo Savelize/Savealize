@@ -1,7 +1,3 @@
-site_savalize_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SiteSavalizeBundle:Default:index }
-
 SiteSavalizeBundle_brand:
     resource: "@SiteSavalizeBundle/Resources/config/routing/brand.php"
     prefix:   /brand
@@ -29,3 +25,7 @@ SiteSavalizeBundle_useraccount:
 SiteSavalizeBundle_adminaccount:
     resource: "@SiteSavalizeBundle/Resources/config/routing/adminaccount.php"
     prefix:   /adminaccount
+    
+site_savalize_homepage:
+    pattern:  /
+    defaults: { _controller: SiteSavalizeBundle:Default:index }
