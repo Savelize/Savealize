@@ -5,9 +5,19 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/bootstrap-responsive.css')}}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <!-- HTML5 shim for IE backwards compatibility -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+              <script src="{{asset('js/jquery.js')}}"></script>
+            <script src="{{asset('js/bootstrap.min.js')}}"></script>
     </body>
 </html>

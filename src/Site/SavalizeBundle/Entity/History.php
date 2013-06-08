@@ -257,4 +257,5 @@ class History
     {
         return $this->product;
     }
+    
 }

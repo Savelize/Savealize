@@ -183,4 +183,8 @@ class CompanyController extends Controller
             ->getForm()
         ;
     }
+    
+    public function page10Action(){
+        return $this->render('SiteSavalizeBundle:Company:page10.html.twig');
+    }
 }
