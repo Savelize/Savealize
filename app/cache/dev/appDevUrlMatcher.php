@@ -562,6 +562,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'site_savalize_homepage',);
         }
 
+        // site_user_page4
+        if ($pathinfo === '/usrhistory') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::usrhistoryAction',  '_route' => 'site_user_page4',);
+        }
+
+        // site_company_page10
+        if ($pathinfo === '/page10') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::page10Action',  '_route' => 'site_company_page10',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

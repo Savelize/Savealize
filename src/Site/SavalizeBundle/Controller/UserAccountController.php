@@ -183,4 +183,11 @@ class UserAccountController extends Controller
             ->getForm()
         ;
     }
+    /*user history page 4*/
+    public function usrhistoryAction(){
+        $id = 1;
+        $em = $this->getDoctrine()->getEntityManager();
+        $usrhistory = $em->getRepository('SiteSavalizeBundle:History')->findAll();
+        return $this->render('SiteSavalizeBundle:UserAccount:page4.html.twig', array('usrhistory' => $usrhistory));
+    }
 }
