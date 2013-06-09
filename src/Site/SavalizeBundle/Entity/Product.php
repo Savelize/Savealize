@@ -43,38 +43,16 @@ class Product
     private $isDeleted;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Brand", inversedBy="product")
-     * @ORM\JoinTable(name="product_brand",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $brand;
-
-    /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="category")
+     * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
      */
     private $category;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->brand = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
 
     /**
      * Get id
@@ -153,39 +131,6 @@ class Product
     public function getIsDeleted()
     {
         return $this->isDeleted;
-    }
-
-    /**
-     * Add brand
-     *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
-     * @return Product
-     */
-    public function addBrand(\Site\SavalizeBundle\Entity\Brand $brand)
-    {
-        $this->brand[] = $brand;
-    
-        return $this;
-    }
-
-    /**
-     * Remove brand
-     *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
-     */
-    public function removeBrand(\Site\SavalizeBundle\Entity\Brand $brand)
-    {
-        $this->brand->removeElement($brand);
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getBrand()
-    {
-        return $this->brand;
     }
 
     /**

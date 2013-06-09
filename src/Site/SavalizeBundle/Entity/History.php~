@@ -36,14 +36,11 @@ class History
     private $date;
 
     /**
-     * @var \Brand
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Brand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="quantity", type="integer", nullable=false)
      */
-    private $brand;
+    private $quantity;
 
     /**
      * @var \Category
@@ -56,16 +53,6 @@ class History
     private $category;
 
     /**
-     * @var \Company
-     *
-     * @ORM\ManyToOne(targetEntity="Company")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     * })
-     */
-    private $company;
-
-    /**
      * @var \UserAccount
      *
      * @ORM\ManyToOne(targetEntity="UserAccount")
@@ -76,14 +63,14 @@ class History
     private $user;
 
     /**
-     * @var \Product
+     * @var \ProductBrand
      *
-     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\ManyToOne(targetEntity="ProductBrand")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
      * })
      */
-    private $product;
+    private $productBrand;
 
 
 }

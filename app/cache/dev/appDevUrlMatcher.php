@@ -572,6 +572,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::page10Action',  '_route' => 'site_company_page10',);
         }
 
+        // SiteSavalizeBundle_reviews
+        if ($pathinfo === '/reviews/show') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\DefaultController::showReviewsAction',  '_route' => 'SiteSavalizeBundle_reviews',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

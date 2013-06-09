@@ -82,6 +82,7 @@ class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'site_savalize_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Site\\SavalizeBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),),
         'site_user_page4' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::usrhistoryAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/usrhistory',    ),  ),  4 =>   array (  ),),
         'site_company_page10' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::page10Action',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/page10',    ),  ),  4 =>   array (  ),),
+        'SiteSavalizeBundle_reviews' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Site\\SavalizeBundle\\Controller\\DefaultController::showReviewsAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/reviews/show',    ),  ),  4 =>   array (  ),),
     );
 
     /**

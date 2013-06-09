@@ -43,18 +43,14 @@ class Brand
     private $isDeleted;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Company
      *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="brand")
+     * @ORM\ManyToOne(targetEntity="Company")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * })
      */
-    private $product;
+    private $company;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
 }

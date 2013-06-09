@@ -1,0 +1,59 @@
+<?php
+
+namespace Site\SavalizeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductRating
+ *
+ * @ORM\Table(name="product_rating")
+ * @ORM\Entity
+ */
+class ProductRating
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rating", type="integer", nullable=false)
+     */
+    private $rating;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="like", type="boolean", nullable=false)
+     */
+    private $like;
+
+    /**
+     * @var \ProductBrand
+     *
+     * @ORM\ManyToOne(targetEntity="ProductBrand")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
+     * })
+     */
+    private $productBrand;
+
+    /**
+     * @var \UserAccount
+     *
+     * @ORM\ManyToOne(targetEntity="UserAccount")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}

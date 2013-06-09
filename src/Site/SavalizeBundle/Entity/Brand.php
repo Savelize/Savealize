@@ -43,20 +43,16 @@ class Brand
     private $isDeleted;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Company
      *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="brand")
+     * @ORM\ManyToOne(targetEntity="Company")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * })
      */
-    private $product;
+    private $company;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
 
     /**
      * Get id
@@ -138,35 +134,25 @@ class Brand
     }
 
     /**
-     * Add product
+     * Set company
      *
-     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @param \Site\SavalizeBundle\Entity\Company $company
      * @return Brand
      */
-    public function addProduct(\Site\SavalizeBundle\Entity\Product $product)
+    public function setCompany(\Site\SavalizeBundle\Entity\Company $company = null)
     {
-        $this->product[] = $product;
+        $this->company = $company;
     
         return $this;
     }
 
     /**
-     * Remove product
+     * Get company
      *
-     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @return \Site\SavalizeBundle\Entity\Company 
      */
-    public function removeProduct(\Site\SavalizeBundle\Entity\Product $product)
+    public function getCompany()
     {
-        $this->product->removeElement($product);
-    }
-
-    /**
-     * Get product
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProduct()
-    {
-        return $this->product;
+        return $this->company;
     }
 }

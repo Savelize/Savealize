@@ -43,21 +43,6 @@ class Product
     private $isDeleted;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Brand", inversedBy="product")
-     * @ORM\JoinTable(name="product_brand",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $brand;
-
-    /**
      * @var \Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
@@ -67,12 +52,5 @@ class Product
      */
     private $category;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->brand = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+
 }
