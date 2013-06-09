@@ -29,6 +29,23 @@ class ProductRating
     private $rating;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="like", type="boolean", nullable=false)
+     */
+    private $like;
+
+    /**
+     * @var \ProductBrand
+     *
+     * @ORM\ManyToOne(targetEntity="ProductBrand")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
+     * })
+     */
+    private $productBrand;
+
+    /**
      * @var \UserAccount
      *
      * @ORM\ManyToOne(targetEntity="UserAccount")
@@ -37,26 +54,6 @@ class ProductRating
      * })
      */
     private $user;
-
-    /**
-     * @var \Brand
-     *
-     * @ORM\ManyToOne(targetEntity="Brand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     * })
-     */
-    private $brand;
-
-    /**
-     * @var \Product
-     *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     * })
-     */
-    private $product;
 
 
 
@@ -94,6 +91,52 @@ class ProductRating
     }
 
     /**
+     * Set like
+     *
+     * @param boolean $like
+     * @return ProductRating
+     */
+    public function setLike($like)
+    {
+        $this->like = $like;
+    
+        return $this;
+    }
+
+    /**
+     * Get like
+     *
+     * @return boolean 
+     */
+    public function getLike()
+    {
+        return $this->like;
+    }
+
+    /**
+     * Set productBrand
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
+     * @return ProductRating
+     */
+    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
+    {
+        $this->productBrand = $productBrand;
+    
+        return $this;
+    }
+
+    /**
+     * Get productBrand
+     *
+     * @return \Site\SavalizeBundle\Entity\ProductBrand 
+     */
+    public function getProductBrand()
+    {
+        return $this->productBrand;
+    }
+
+    /**
      * Set user
      *
      * @param \Site\SavalizeBundle\Entity\UserAccount $user
@@ -114,51 +157,5 @@ class ProductRating
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
-     * @return ProductRating
-     */
-    public function setBrand(\Site\SavalizeBundle\Entity\Brand $brand = null)
-    {
-        $this->brand = $brand;
-    
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Site\SavalizeBundle\Entity\Brand 
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set product
-     *
-     * @param \Site\SavalizeBundle\Entity\Product $product
-     * @return ProductRating
-     */
-    public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
-    {
-        $this->product = $product;
-    
-        return $this;
-    }
-
-    /**
-     * Get product
-     *
-     * @return \Site\SavalizeBundle\Entity\Product 
-     */
-    public function getProduct()
-    {
-        return $this->product;
     }
 }

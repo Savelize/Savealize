@@ -7,6 +7,10 @@
     <field name="name" type="string" column="name" length="30" nullable="false"/>
     <field name="confirmed" type="blob" column="confirmed" nullable="false"/>
     <field name="isDeleted" type="blob" column="is_deleted" nullable="false"/>
-    <many-to-many field="product" target-entity="Product" mapped-by="brand"/>
+    <many-to-one field="company" target-entity="Company">
+      <join-columns>
+        <join-column name="company_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

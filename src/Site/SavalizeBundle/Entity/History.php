@@ -36,19 +36,16 @@ class History
     private $date;
 
     /**
-     * @var \Brand
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Brand" , inversedBy="brand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="quantity", type="integer", nullable=false)
      */
-    private $brand;
+    private $quantity;
 
     /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category" , inversedBy="category")
+     * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
@@ -56,19 +53,9 @@ class History
     private $category;
 
     /**
-     * @var \Company
-     *
-     * @ORM\ManyToOne(targetEntity="Company" , inversedBy="company")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     * })
-     */
-    private $company;
-
-    /**
      * @var \UserAccount
      *
-     * @ORM\ManyToOne(targetEntity="UserAccount" , inversedBy="user_account")
+     * @ORM\ManyToOne(targetEntity="UserAccount")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -76,14 +63,14 @@ class History
     private $user;
 
     /**
-     * @var \Product
+     * @var \ProductBrand
      *
-     * @ORM\ManyToOne(targetEntity="Product" , inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="ProductBrand")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
      * })
      */
-    private $product;
+    private $productBrand;
 
 
 
@@ -144,26 +131,26 @@ class History
     }
 
     /**
-     * Set brand
+     * Set quantity
      *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
+     * @param integer $quantity
      * @return History
      */
-    public function setBrand(\Site\SavalizeBundle\Entity\Brand $brand = null)
+    public function setQuantity($quantity)
     {
-        $this->brand = $brand;
+        $this->quantity = $quantity;
     
         return $this;
     }
 
     /**
-     * Get brand
+     * Get quantity
      *
-     * @return \Site\SavalizeBundle\Entity\Brand 
+     * @return integer 
      */
-    public function getBrand()
+    public function getQuantity()
     {
-        return $this->brand;
+        return $this->quantity;
     }
 
     /**
@@ -190,29 +177,6 @@ class History
     }
 
     /**
-     * Set company
-     *
-     * @param \Site\SavalizeBundle\Entity\Company $company
-     * @return History
-     */
-    public function setCompany(\Site\SavalizeBundle\Entity\Company $company = null)
-    {
-        $this->company = $company;
-    
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Site\SavalizeBundle\Entity\Company 
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
      * Set user
      *
      * @param \Site\SavalizeBundle\Entity\UserAccount $user
@@ -236,26 +200,25 @@ class History
     }
 
     /**
-     * Set product
+     * Set productBrand
      *
-     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
      * @return History
      */
-    public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
+    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
     {
-        $this->product = $product;
+        $this->productBrand = $productBrand;
     
         return $this;
     }
 
     /**
-     * Get product
+     * Get productBrand
      *
-     * @return \Site\SavalizeBundle\Entity\Product 
+     * @return \Site\SavalizeBundle\Entity\ProductBrand 
      */
-    public function getProduct()
+    public function getProductBrand()
     {
-        return $this->product;
+        return $this->productBrand;
     }
-    
 }
