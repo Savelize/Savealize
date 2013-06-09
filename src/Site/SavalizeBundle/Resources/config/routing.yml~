@@ -37,15 +37,3 @@ site_user_page4:
 site_company_page10:
     pattern: /page10
     defaults: { _controller: SiteSavalizeBundle:Company:page10 }
-
-SiteSavalizeBundle_reviews:
-    pattern:  /reviews/show
-    defaults: { _controller: SiteSavalizeBundle:Default:showReviews }
-    
-contact_us:
-  pattern:  /user/contact
-  defaults: { _controller: SiteSavalizeBundle:UserAccount:contact }
-  
-contact_us_company:
-  pattern:  /company/contact
-  defaults: { _controller: SiteSavalizeBundle:Company:contact }
