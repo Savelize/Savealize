@@ -66,4 +66,27 @@ class UserNotification
     {
         return $this->content;
     }
+
+    /**
+     * Set customer
+     *
+     * @param \Site\SavalizeBundle\Entity\Customer $customer
+     * @return UserNotification
+     */
+    public function setCustomer(\Site\SavalizeBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Site\SavalizeBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }

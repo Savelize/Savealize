@@ -87,4 +87,158 @@ class ProductBrand
     {
         return $this->picture;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->histories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productRatings = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productComments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set brand
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brand
+     * @return ProductBrand
+     */
+    public function setBrand(\Site\SavalizeBundle\Entity\Brand $brand = null)
+    {
+        $this->brand = $brand;
+    
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \Site\SavalizeBundle\Entity\Brand 
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @return ProductBrand
+     */
+    public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Site\SavalizeBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Add histories
+     *
+     * @param \Site\SavalizeBundle\Entity\History $histories
+     * @return ProductBrand
+     */
+    public function addHistorie(\Site\SavalizeBundle\Entity\History $histories)
+    {
+        $this->histories[] = $histories;
+    
+        return $this;
+    }
+
+    /**
+     * Remove histories
+     *
+     * @param \Site\SavalizeBundle\Entity\History $histories
+     */
+    public function removeHistorie(\Site\SavalizeBundle\Entity\History $histories)
+    {
+        $this->histories->removeElement($histories);
+    }
+
+    /**
+     * Get histories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistories()
+    {
+        return $this->histories;
+    }
+
+    /**
+     * Add productRatings
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductRating $productRatings
+     * @return ProductBrand
+     */
+    public function addProductRating(\Site\SavalizeBundle\Entity\ProductRating $productRatings)
+    {
+        $this->productRatings[] = $productRatings;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productRatings
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductRating $productRatings
+     */
+    public function removeProductRating(\Site\SavalizeBundle\Entity\ProductRating $productRatings)
+    {
+        $this->productRatings->removeElement($productRatings);
+    }
+
+    /**
+     * Get productRatings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductRatings()
+    {
+        return $this->productRatings;
+    }
+
+    /**
+     * Add productComments
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductComment $productComments
+     * @return ProductBrand
+     */
+    public function addProductComment(\Site\SavalizeBundle\Entity\ProductComment $productComments)
+    {
+        $this->productComments[] = $productComments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productComments
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductComment $productComments
+     */
+    public function removeProductComment(\Site\SavalizeBundle\Entity\ProductComment $productComments)
+    {
+        $this->productComments->removeElement($productComments);
+    }
+
+    /**
+     * Get productComments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductComments()
+    {
+        return $this->productComments;
+    }
 }

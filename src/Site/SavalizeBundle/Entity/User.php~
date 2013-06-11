@@ -27,6 +27,21 @@ class User
     /**
      * @var string
      *
+     * @ORM\Column(name="fname", type="string", length=30)
+     */
+    private $fname;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lname", type="string", length=30)
+     */
+    private $lname;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="username", type="string", length=30)
      */
     private $username;

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProductBrand
  *
- * @ORM\Table()
+ * @ORM\Table(name="product_brand")
  * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductBrandRepository")
  */
 class ProductBrand

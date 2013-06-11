@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProductRating
  *
- * @ORM\Table()
+ * @ORM\Table(name="product_rating")
  * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductRatingRepository")
  */
 class ProductRating

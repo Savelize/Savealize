@@ -207,4 +207,50 @@ class User
     {
         return $this->updatedAt;
     }
+
+    /**
+     * Set fname
+     *
+     * @param string $fname
+     * @return User
+     */
+    public function setFname($fname)
+    {
+        $this->fname = $fname;
+    
+        return $this;
+    }
+
+    /**
+     * Get fname
+     *
+     * @return string 
+     */
+    public function getFname()
+    {
+        return $this->fname;
+    }
+
+    /**
+     * Set lname
+     *
+     * @param string $lname
+     * @return User
+     */
+    public function setLname($lname)
+    {
+        $this->lname = $lname;
+    
+        return $this;
+    }
+
+    /**
+     * Get lname
+     *
+     * @return string 
+     */
+    public function getLname()
+    {
+        return $this->lname;
+    }
 }

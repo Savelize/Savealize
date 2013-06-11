@@ -4,7 +4,10 @@ namespace Site\SavalizeBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Collection;
 use Site\SavalizeBundle\Entity\UserAccount;
 use Site\SavalizeBundle\Form\UserAccountType;
 
@@ -189,5 +192,40 @@ class UserAccountController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $usrhistory = $em->getRepository('SiteSavalizeBundle:History')->findAll();
         return $this->render('SiteSavalizeBundle:UserAccount:page4.html.twig', array('usrhistory' => $usrhistory));
+    }
+    
+    public function contactAction() {
+        //get the request object
+        $request = $this->getRequest();
+        $collectionConstraint = new Collection(array(
+            'name' => new NotBlank(),
+            'email' => array(new Email(), new NotBlank()),
+            'subject' => array(),
+            'message' => new NotBlank()
+        ));
+        $data = array();
+        $data['subject'] = 'Contact For Support';
+        //create the form
+        $formBuilder = $this->createFormBuilder($data, array(
+                    'validation_constraint' => $collectionConstraint,
+                ))
+                ->add('name')
+                ->add('subject', null, array('required' => false))
+                ->add('email', 'email', array('attr' => array('class' => 'email')))
+                ->add('message', 'textarea',array('attr' => array('rows' => '10','cols' => '50')))
+        ;
+        $form = $formBuilder->getForm();
+        //check if this is the user posted his data
+        if ($request->getMethod() == 'POST') {
+            //fill the form data from the request
+            $form->bindRequest($request);
+            //check if the form values are correct
+            if ($form->isValid()) {
+                $data = $form->getData();
+                //return $this->redirect($this->generateUrl('contact_success',array('name' => $data['name'])));
+                return $this->render('SiteSavalizeBundle:UserAccount:msgToUser.html.twig', array('msg' =>"Thank u ".$data['name']." for contacting us"));
+            }
+        }
+        return $this->render('SiteSavalizeBundle:UserAccount:contact.html.twig', array('form' => $form->createView()));
     }
 }

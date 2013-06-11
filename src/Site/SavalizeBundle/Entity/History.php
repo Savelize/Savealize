@@ -132,4 +132,50 @@ class History
     {
         return $this->baughtAt;
     }
+
+    /**
+     * Set productBrand
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
+     * @return History
+     */
+    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
+    {
+        $this->productBrand = $productBrand;
+    
+        return $this;
+    }
+
+    /**
+     * Get productBrand
+     *
+     * @return \Site\SavalizeBundle\Entity\ProductBrand 
+     */
+    public function getProductBrand()
+    {
+        return $this->productBrand;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Site\SavalizeBundle\Entity\Customer $customer
+     * @return History
+     */
+    public function setCustomer(\Site\SavalizeBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Site\SavalizeBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }

@@ -155,4 +155,44 @@ class Product
     {
         return $this->category;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productBrands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add productBrands
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrands
+     * @return Product
+     */
+    public function addProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrands)
+    {
+        $this->productBrands[] = $productBrands;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productBrands
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrands
+     */
+    public function removeProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrands)
+    {
+        $this->productBrands->removeElement($productBrands);
+    }
+
+    /**
+     * Get productBrands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductBrands()
+    {
+        return $this->productBrands;
+    }
 }

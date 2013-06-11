@@ -98,6 +98,11 @@ class Customer
     *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductRating", mappedBy="customer")
     **/
     private $productRatings;
+    
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductComment", mappedBy="customer")
+    **/
+    private $productComments;
 
     /**
      * Get id

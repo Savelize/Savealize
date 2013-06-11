@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserNotification
  *
- * @ORM\Table()
+ * @ORM\Table(name="user_notification")
  * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\UserNotificationRepository")
  */
 class UserNotification
