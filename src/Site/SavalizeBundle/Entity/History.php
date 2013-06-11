@@ -8,71 +8,51 @@ use Doctrine\ORM\Mapping as ORM;
  * History
  *
  * @ORM\Table(name="history")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\HistoryRepository")
  */
 class History
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date", nullable=false)
-     */
-    private $date;
-
-    /**
      * @var integer
      *
-     * @ORM\Column(name="quantity", type="integer", nullable=false)
+     * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
 
     /**
-     * @var \Category
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="baughtAt", type="datetime")
      */
-    private $category;
+    private $baughtAt;
 
     /**
-     * @var \UserAccount
-     *
-     * @ORM\ManyToOne(targetEntity="UserAccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
-
-    /**
-     * @var \ProductBrand
-     *
-     * @ORM\ManyToOne(targetEntity="ProductBrand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", inversedBy="histories")
+     *@ORM\JoinColumn(name="productBrand_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $productBrand;
 
-
+    /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="histories")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $customer;
 
     /**
      * Get id
@@ -108,29 +88,6 @@ class History
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return History
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set quantity
      *
      * @param integer $quantity
@@ -154,71 +111,25 @@ class History
     }
 
     /**
-     * Set category
+     * Set baughtAt
      *
-     * @param \Site\SavalizeBundle\Entity\Category $category
+     * @param \DateTime $baughtAt
      * @return History
      */
-    public function setCategory(\Site\SavalizeBundle\Entity\Category $category = null)
+    public function setBaughtAt($baughtAt)
     {
-        $this->category = $category;
+        $this->baughtAt = $baughtAt;
     
         return $this;
     }
 
     /**
-     * Get category
+     * Get baughtAt
      *
-     * @return \Site\SavalizeBundle\Entity\Category 
+     * @return \DateTime 
      */
-    public function getCategory()
+    public function getBaughtAt()
     {
-        return $this->category;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
-     * @return History
-     */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set productBrand
-     *
-     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
-     * @return History
-     */
-    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
-    {
-        $this->productBrand = $productBrand;
-    
-        return $this;
-    }
-
-    /**
-     * Get productBrand
-     *
-     * @return \Site\SavalizeBundle\Entity\ProductBrand 
-     */
-    public function getProductBrand()
-    {
-        return $this->productBrand;
+        return $this->baughtAt;
     }
 }

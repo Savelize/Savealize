@@ -8,57 +8,57 @@ use Doctrine\ORM\Mapping as ORM;
  * Brand
  *
  * @ORM\Table(name="brand")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\BrandRepository")
  */
 class Brand
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30)
      */
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="confirmed", type="blob", nullable=false)
+     * @ORM\Column(name="confirmed", type="integer")
      */
     private $confirmed;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="is_deleted", type="blob", nullable=false)
+     * @ORM\Column(name="isDeleted", type="boolean")
      */
     private $isDeleted;
 
-    /**
-     * @var \Company
-     *
-     * @ORM\ManyToOne(targetEntity="Company")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     * })
+     /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Company", inversedBy="brands")
+     *@ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $company;
-
-
+      
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", mappedBy="brand")
+    **/
+    private $productBrands;
 
     /**
      * Get id
      *
      * @return integer 
      */
+     
     public function getId()
     {
         return $this->id;
@@ -90,7 +90,7 @@ class Brand
     /**
      * Set confirmed
      *
-     * @param string $confirmed
+     * @param integer $confirmed
      * @return Brand
      */
     public function setConfirmed($confirmed)
@@ -103,7 +103,7 @@ class Brand
     /**
      * Get confirmed
      *
-     * @return string 
+     * @return integer 
      */
     public function getConfirmed()
     {
@@ -113,7 +113,7 @@ class Brand
     /**
      * Set isDeleted
      *
-     * @param string $isDeleted
+     * @param boolean $isDeleted
      * @return Brand
      */
     public function setIsDeleted($isDeleted)
@@ -126,7 +126,7 @@ class Brand
     /**
      * Get isDeleted
      *
-     * @return string 
+     * @return boolean 
      */
     public function getIsDeleted()
     {

@@ -4,17 +4,9 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="userId" type="integer" column="user_id" nullable="true"/>
+    <field name="productBrandId" type="integer" column="product_brand_id" nullable="false"/>
     <field name="rating" type="integer" column="rating" nullable="false"/>
-    <field name="like" type="boolean" column="like" nullable="false"/>
-    <many-to-one field="user" target-entity="UserAccount">
-      <join-columns>
-        <join-column name="user_id" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="productBrand" target-entity="ProductBrand">
-      <join-columns>
-        <join-column name="product_brand_id" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
+    <field name="liked" type="boolean" column="liked" nullable="false"/>
   </entity>
 </doctrine-mapping>

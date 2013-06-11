@@ -8,50 +8,50 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductRepository")
  */
 class Product
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30)
      */
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="confirmed", type="blob", nullable=false)
+     * @ORM\Column(name="confirmed", type="integer")
      */
     private $confirmed;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="is_deleted", type="blob", nullable=false)
+     * @ORM\Column(name="isDeleted", type="boolean")
      */
     private $isDeleted;
 
     /**
-     * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Category", inversedBy="products")
+     *@ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $category;
-
+    
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", mappedBy="product")
+    **/
+    private $productBrands;
 
 
     /**
@@ -90,7 +90,7 @@ class Product
     /**
      * Set confirmed
      *
-     * @param string $confirmed
+     * @param integer $confirmed
      * @return Product
      */
     public function setConfirmed($confirmed)
@@ -103,7 +103,7 @@ class Product
     /**
      * Get confirmed
      *
-     * @return string 
+     * @return integer 
      */
     public function getConfirmed()
     {
@@ -113,7 +113,7 @@ class Product
     /**
      * Set isDeleted
      *
-     * @param string $isDeleted
+     * @param boolean $isDeleted
      * @return Product
      */
     public function setIsDeleted($isDeleted)
@@ -126,7 +126,7 @@ class Product
     /**
      * Get isDeleted
      *
-     * @return string 
+     * @return boolean 
      */
     public function getIsDeleted()
     {

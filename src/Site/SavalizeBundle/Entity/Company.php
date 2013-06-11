@@ -8,76 +8,79 @@ use Doctrine\ORM\Mapping as ORM;
  * Company
  *
  * @ORM\Table(name="company")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\CompanyRepository")
  */
 class Company
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=20, nullable=false)
+     * @ORM\Column(name="username", type="string", length=30)
      */
     private $username;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="password", type="integer", nullable=false)
+     * @ORM\Column(name="password", type="string", length=20)
      */
     private $password;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=30, nullable=false)
+     * @ORM\Column(name="email", type="string", length=50)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telphone", type="string", length=15, nullable=false)
+     * @ORM\Column(name="telephone", type="string", length=11)
      */
-    private $telphone;
+    private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=20, nullable=false)
+     * @ORM\Column(name="country", type="string", length=30)
      */
     private $country;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=20, nullable=false)
+     * @ORM\Column(name="city", type="string", length=30)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=20, nullable=false)
+     * @ORM\Column(name="region", type="string", length=30)
      */
     private $region;
 
-
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\Brand", mappedBy="Company")
+    **/
+    private $brands;
 
     /**
      * Get id
@@ -138,7 +141,7 @@ class Company
     /**
      * Set password
      *
-     * @param integer $password
+     * @param string $password
      * @return Company
      */
     public function setPassword($password)
@@ -151,7 +154,7 @@ class Company
     /**
      * Get password
      *
-     * @return integer 
+     * @return string 
      */
     public function getPassword()
     {
@@ -182,26 +185,26 @@ class Company
     }
 
     /**
-     * Set telphone
+     * Set telephone
      *
-     * @param string $telphone
+     * @param string $telephone
      * @return Company
      */
-    public function setTelphone($telphone)
+    public function setTelephone($telephone)
     {
-        $this->telphone = $telphone;
+        $this->telephone = $telephone;
     
         return $this;
     }
 
     /**
-     * Get telphone
+     * Get telephone
      *
      * @return string 
      */
-    public function getTelphone()
+    public function getTelephone()
     {
-        return $this->telphone;
+        return $this->telephone;
     }
 
     /**
@@ -271,5 +274,45 @@ class Company
     public function getRegion()
     {
         return $this->region;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->brands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add brands
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brands
+     * @return Company
+     */
+    public function addBrand(\Site\SavalizeBundle\Entity\Brand $brands)
+    {
+        $this->brands[] = $brands;
+    
+        return $this;
+    }
+
+    /**
+     * Remove brands
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brands
+     */
+    public function removeBrand(\Site\SavalizeBundle\Entity\Brand $brands)
+    {
+        $this->brands->removeElement($brands);
+    }
+
+    /**
+     * Get brands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBrands()
+    {
+        return $this->brands;
     }
 }

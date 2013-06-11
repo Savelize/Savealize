@@ -1,31 +1,3 @@
-SiteSavalizeBundle_brand:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/brand.php"
-    prefix:   /brand
-
-SiteSavalizeBundle_category:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/category.php"
-    prefix:   /category
-
-SiteSavalizeBundle_subcategory:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/subcategory.php"
-    prefix:   /subcategory
-
-SiteSavalizeBundle_company:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/company.php"
-    prefix:   /company
-
-SiteSavalizeBundle_product:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/product.php"
-    prefix:   /product
-
-SiteSavalizeBundle_useraccount:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/useraccount.php"
-    prefix:   /useraccount
-
-SiteSavalizeBundle_adminaccount:
-    resource: "@SiteSavalizeBundle/Resources/config/routing/adminaccount.php"
-    prefix:   /adminaccount
-    
 site_savalize_homepage:
     pattern:  /
     defaults: { _controller: SiteSavalizeBundle:Default:index }

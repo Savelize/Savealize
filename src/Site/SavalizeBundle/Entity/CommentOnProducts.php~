@@ -29,16 +29,6 @@ class CommentOnProducts
     private $comment;
 
     /**
-     * @var \UserAccount
-     *
-     * @ORM\ManyToOne(targetEntity="UserAccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
-
-    /**
      * @var \ProductBrand
      *
      * @ORM\ManyToOne(targetEntity="ProductBrand")
@@ -47,6 +37,16 @@ class CommentOnProducts
      * })
      */
     private $productBrand;
+
+    /**
+     * @var \UserAccount
+     *
+     * @ORM\ManyToOne(targetEntity="UserAccount")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
 
 
 }

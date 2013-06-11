@@ -8,54 +8,44 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductRating
  *
  * @ORM\Table(name="product_rating")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductRatingRepository")
  */
 class ProductRating
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="rating", type="integer", nullable=false)
+     * @ORM\Column(name="rating", type="integer")
      */
     private $rating;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="like", type="boolean", nullable=false)
+     * @ORM\Column(name="liked", type="boolean")
      */
-    private $like;
+    private $liked;
 
     /**
-     * @var \ProductBrand
-     *
-     * @ORM\ManyToOne(targetEntity="ProductBrand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_brand_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", inversedBy="productRatings")
+     *@ORM\JoinColumn(name="productBrand_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $productBrand;
 
     /**
-     * @var \UserAccount
-     *
-     * @ORM\ManyToOne(targetEntity="UserAccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="productRatings")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
      */
-    private $user;
-
-
+    private $customer;
 
     /**
      * Get id
@@ -91,71 +81,25 @@ class ProductRating
     }
 
     /**
-     * Set like
+     * Set liked
      *
-     * @param boolean $like
+     * @param boolean $liked
      * @return ProductRating
      */
-    public function setLike($like)
+    public function setLiked($liked)
     {
-        $this->like = $like;
+        $this->liked = $liked;
     
         return $this;
     }
 
     /**
-     * Get like
+     * Get liked
      *
      * @return boolean 
      */
-    public function getLike()
+    public function getLiked()
     {
-        return $this->like;
-    }
-
-    /**
-     * Set productBrand
-     *
-     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
-     * @return ProductRating
-     */
-    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
-    {
-        $this->productBrand = $productBrand;
-    
-        return $this;
-    }
-
-    /**
-     * Get productBrand
-     *
-     * @return \Site\SavalizeBundle\Entity\ProductBrand 
-     */
-    public function getProductBrand()
-    {
-        return $this->productBrand;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
-     * @return ProductRating
-     */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
-     */
-    public function getUser()
-    {
-        return $this->user;
+        return $this->liked;
     }
 }

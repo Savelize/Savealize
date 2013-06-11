@@ -8,47 +8,52 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductBrand
  *
  * @ORM\Table(name="product_brand")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductBrandRepository")
  */
 class ProductBrand
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pic", type="string", length=30, nullable=false)
+     * @ORM\Column(name="picture", type="string", length=100)
      */
-    private $pic;
+    private $picture;
 
     /**
-     * @var \Brand
-     *
-     * @ORM\ManyToOne(targetEntity="Brand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Brand", inversedBy="productBrands")
+     *@ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $brand;
-
+    
     /**
-     * @var \Product
-     *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Product", inversedBy="productBrands")
+     *@ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $product;
-
-
+    
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\History", mappedBy="productBrand")
+    **/
+    private $histories;
+    
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductRating", mappedBy="productBrand")
+    **/
+    private $productRatings;
+    
+    /**
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductComment", mappedBy="productBrand")
+    **/
+    private $productComments;
 
     /**
      * Get id
@@ -61,71 +66,25 @@ class ProductBrand
     }
 
     /**
-     * Set pic
+     * Set picture
      *
-     * @param string $pic
+     * @param string $picture
      * @return ProductBrand
      */
-    public function setPic($pic)
+    public function setPicture($picture)
     {
-        $this->pic = $pic;
+        $this->picture = $picture;
     
         return $this;
     }
 
     /**
-     * Get pic
+     * Get picture
      *
      * @return string 
      */
-    public function getPic()
+    public function getPicture()
     {
-        return $this->pic;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
-     * @return ProductBrand
-     */
-    public function setBrand(\Site\SavalizeBundle\Entity\Brand $brand = null)
-    {
-        $this->brand = $brand;
-    
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Site\SavalizeBundle\Entity\Brand 
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set product
-     *
-     * @param \Site\SavalizeBundle\Entity\Product $product
-     * @return ProductBrand
-     */
-    public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
-    {
-        $this->product = $product;
-    
-        return $this;
-    }
-
-    /**
-     * Get product
-     *
-     * @return \Site\SavalizeBundle\Entity\Product 
-     */
-    public function getProduct()
-    {
-        return $this->product;
+        return $this->picture;
     }
 }

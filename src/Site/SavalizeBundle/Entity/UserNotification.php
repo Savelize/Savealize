@@ -8,37 +8,31 @@ use Doctrine\ORM\Mapping as ORM;
  * UserNotification
  *
  * @ORM\Table(name="user_notification")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\UserNotificationRepository")
  */
 class UserNotification
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=false)
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
-     * @var \UserAccount
-     *
-     * @ORM\ManyToOne(targetEntity="UserAccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="notifications")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
      */
-    private $user;
-
-
+    private $customer;
 
     /**
      * Get id
@@ -71,28 +65,5 @@ class UserNotification
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
-     * @return UserNotification
-     */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
