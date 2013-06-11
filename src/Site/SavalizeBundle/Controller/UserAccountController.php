@@ -228,4 +228,72 @@ class UserAccountController extends Controller
         }
         return $this->render('SiteSavalizeBundle:UserAccount:contact.html.twig', array('form' => $form->createView()));
     }
+    
+    /* user personal settings*/
+    public function personalusersettingsAction(){
+        //$request = $this->getRequest();
+        $collectionConstraint = new Collection(array(
+            'First_Name' => new NotBlank(),
+            'Last_Name' => new NotBlank(),
+            'Username' => new NotBlank(),
+            'Password' => new NotBlank(),
+            'Confirm_password' => new NotBlank(),
+            'Email' => array(new Email(), new NotBlank()),
+            'Country' => new NotBlank(),
+            'City' => new NotBlank(),
+            'Region' => new NotBlank(),
+            'Age' => new NotBlank(),
+            'Salary' => new NotBlank()
+        ));
+        $data = array();
+        $formBuilder = $this->createFormBuilder($data, array(
+                    'validation_constraint' => $collectionConstraint,
+                ))
+                ->add('First_Name')
+                ->add('Last_Name')
+                ->add('Username')
+                ->add('Password', 'password')
+                ->add('Confirm_password', 'password')
+                ->add('Email', 'email', array('attr' => array('class' => 'email')))
+                ->add('Country')
+                ->add('City')
+                ->add('Region')
+                ->add('Age')
+                ->add('Salary')
+        ;
+        $form = $formBuilder->getForm();
+        return $this->render('SiteSavalizeBundle:UserAccount:personalusersettings.html.twig', array('form' => $form->createView()));
+    }
+    
+    /* user add/remove category setting*/
+    public function categoryusersettingsAction(){
+        $catarr = array(
+            '1'=>'food',
+            '2'=>'cloth',
+            '3'=>'services',
+            '4'=>'car',
+            '5'=>'drinks',
+            '6'=>'transportation',
+            '7'=>'accomidation',
+            '8'=>'devices',
+            '9'=>'baby',
+            '10'=>'other',
+            '11'=>'food',
+            '12'=>'cloth',
+            '13'=>'services',
+            '14'=>'car',
+            '15'=>'drinks',
+            '16'=>'food',
+            '17'=>'cloth',
+            '18'=>'services',
+            '19'=>'car',
+            '20'=>'drinks',
+            '21'=>'food',
+            '22'=>'cloth',
+            '23'=>'services',
+            '24'=>'car',
+            '25'=>'drinks',
+        );
+        return $this->render('SiteSavalizeBundle:UserAccount:categoryusersettings.html.twig', array('categories' => $catarr));
+    }
 }
