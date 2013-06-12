@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserAccount
  *
  * @ORM\Table(name="user_account")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\UserAccountRepository")
  */
 class UserAccount
 {
@@ -129,6 +129,12 @@ class UserAccount
      */
     private $linkedTo;
 
+     /**
+     @var \History
+     *
+     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
+     */
+    private $history;
 
 
     /**
@@ -484,5 +490,45 @@ class UserAccount
     public function getLinkedTo()
     {
         return $this->linkedTo;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     * @return UserAccount
+     */
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history[] = $history;
+    
+        return $this;
+    }
+
+    /**
+     * Remove history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     */
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history->removeElement($history);
+    }
+
+    /**
+     * Get history
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 }

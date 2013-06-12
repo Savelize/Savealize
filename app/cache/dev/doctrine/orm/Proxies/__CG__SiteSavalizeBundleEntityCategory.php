@@ -87,10 +87,46 @@ class Category extends \Site\SavalizeBundle\Entity\Category implements \Doctrine
         return parent::getIsDeleted();
     }
 
+    public function addProduct(\Site\SavalizeBundle\Entity\Product $products)
+    {
+        $this->__load();
+        return parent::addProduct($products);
+    }
+
+    public function removeProduct(\Site\SavalizeBundle\Entity\Product $products)
+    {
+        $this->__load();
+        return parent::removeProduct($products);
+    }
+
+    public function getProducts()
+    {
+        $this->__load();
+        return parent::getProducts();
+    }
+
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::addHistory($history);
+    }
+
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::removeHistory($history);
+    }
+
+    public function getHistory()
+    {
+        $this->__load();
+        return parent::getHistory();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'confirmed', 'isDeleted', 'products');
+        return array('__isInitialized__', 'id', 'name', 'confirmed', 'isDeleted', 'products', 'history');
     }
 
     public function __clone()

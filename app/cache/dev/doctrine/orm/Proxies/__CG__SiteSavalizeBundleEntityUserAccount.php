@@ -231,10 +231,28 @@ class UserAccount extends \Site\SavalizeBundle\Entity\UserAccount implements \Do
         return parent::getLinkedTo();
     }
 
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::addHistory($history);
+    }
+
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::removeHistory($history);
+    }
+
+    public function getHistory()
+    {
+        $this->__load();
+        return parent::getHistory();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'fname', 'lname', 'username', 'password', 'email', 'country', 'city', 'region', 'age', 'martalStatus', 'car', 'salary', 'createdAt', 'updatedAt', 'linkedTo');
+        return array('__isInitialized__', 'id', 'fname', 'lname', 'username', 'password', 'email', 'country', 'city', 'region', 'age', 'martalStatus', 'car', 'salary', 'createdAt', 'updatedAt', 'linkedTo', 'history');
     }
 
     public function __clone()

@@ -16,8 +16,9 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        
               <script src="{{asset('js/jquery.js')}}"></script>
             <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    </body>
+    {% block javascripts %}{% endblock %}
+        </body>
 </html>

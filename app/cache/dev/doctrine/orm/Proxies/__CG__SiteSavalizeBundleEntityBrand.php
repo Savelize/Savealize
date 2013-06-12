@@ -105,10 +105,28 @@ class Brand extends \Site\SavalizeBundle\Entity\Brand implements \Doctrine\ORM\P
         return parent::getProduct();
     }
 
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::addHistory($history);
+    }
+
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::removeHistory($history);
+    }
+
+    public function getHistory()
+    {
+        $this->__load();
+        return parent::getHistory();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'confirmed', 'isDeleted', 'product');
+        return array('__isInitialized__', 'id', 'name', 'confirmed', 'isDeleted', 'product', 'history');
     }
 
     public function __clone()

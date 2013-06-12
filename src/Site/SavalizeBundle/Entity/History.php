@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * History
  *
  * @ORM\Table(name="history")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\HistoryRepository")
  */
 class History
 {
@@ -38,12 +38,12 @@ class History
     /**
      * @var \Brand
      *
-     * @ORM\ManyToOne(targetEntity="Brand" , inversedBy="brand")
+     * @ORM\ManyToOne(targetEntity="Brand" , inversedBy="brands")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
      * })
      */
-    private $brand;
+    private $brands;
 
     /**
      * @var \Category
@@ -58,12 +58,12 @@ class History
     /**
      * @var \Company
      *
-     * @ORM\ManyToOne(targetEntity="Company" , inversedBy="company")
+     * @ORM\ManyToOne(targetEntity="Company" , inversedBy="companies")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      * })
      */
-    private $company;
+    private $companies;
 
     /**
      * @var \UserAccount
@@ -83,7 +83,7 @@ class History
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      * })
      */
-    private $product;
+    private $products;
 
 
 
@@ -243,7 +243,7 @@ class History
      */
     public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
     {
-        $this->product = $product;
+        $this->products = $product;
     
         return $this;
     }
@@ -255,7 +255,76 @@ class History
      */
     public function getProduct()
     {
-        return $this->product;
+        return $this->products;
     }
     
+
+    /**
+     * Set brands
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brands
+     * @return History
+     */
+    public function setBrands(\Site\SavalizeBundle\Entity\Brand $brands = null)
+    {
+        $this->brands = $brands;
+    
+        return $this;
+    }
+
+    /**
+     * Get brands
+     *
+     * @return \Site\SavalizeBundle\Entity\Brand 
+     */
+    public function getBrands()
+    {
+        return $this->brands;
+    }
+
+    /**
+     * Set companies
+     *
+     * @param \Site\SavalizeBundle\Entity\Company $companies
+     * @return History
+     */
+    public function setCompanies(\Site\SavalizeBundle\Entity\Company $companies = null)
+    {
+        $this->companies = $companies;
+    
+        return $this;
+    }
+
+    /**
+     * Get companies
+     *
+     * @return \Site\SavalizeBundle\Entity\Company 
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * Set products
+     *
+     * @param \Site\SavalizeBundle\Entity\Product $products
+     * @return History
+     */
+    public function setProducts(\Site\SavalizeBundle\Entity\Product $products = null)
+    {
+        $this->products = $products;
+    
+        return $this;
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Site\SavalizeBundle\Entity\Product 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 }

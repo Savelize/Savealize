@@ -147,10 +147,28 @@ class Company extends \Site\SavalizeBundle\Entity\Company implements \Doctrine\O
         return parent::getRegion();
     }
 
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::addHistory($history);
+    }
+
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->__load();
+        return parent::removeHistory($history);
+    }
+
+    public function getHistory()
+    {
+        $this->__load();
+        return parent::getHistory();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'name', 'username', 'password', 'email', 'telphone', 'country', 'city', 'region');
+        return array('__isInitialized__', 'id', 'name', 'username', 'password', 'email', 'telphone', 'country', 'city', 'region', 'history');
     }
 
     public function __clone()

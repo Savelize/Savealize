@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="company")
  * @ORM\Entity
  */
-class Company
-{
+class Company {
+
     /**
      * @var integer
      *
@@ -77,15 +77,19 @@ class Company
      */
     private $region;
 
-
+    /**
+     * @var \History
+     *
+     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
+     */
+    private $history;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -95,10 +99,9 @@ class Company
      * @param string $name
      * @return Company
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -107,8 +110,7 @@ class Company
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -118,10 +120,9 @@ class Company
      * @param string $username
      * @return Company
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
-    
+
         return $this;
     }
 
@@ -130,8 +131,7 @@ class Company
      *
      * @return string 
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -141,10 +141,9 @@ class Company
      * @param integer $password
      * @return Company
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -153,8 +152,7 @@ class Company
      *
      * @return integer 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -164,10 +162,9 @@ class Company
      * @param string $email
      * @return Company
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -176,8 +173,7 @@ class Company
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -187,10 +183,9 @@ class Company
      * @param string $telphone
      * @return Company
      */
-    public function setTelphone($telphone)
-    {
+    public function setTelphone($telphone) {
         $this->telphone = $telphone;
-    
+
         return $this;
     }
 
@@ -199,8 +194,7 @@ class Company
      *
      * @return string 
      */
-    public function getTelphone()
-    {
+    public function getTelphone() {
         return $this->telphone;
     }
 
@@ -210,10 +204,9 @@ class Company
      * @param string $country
      * @return Company
      */
-    public function setCountry($country)
-    {
+    public function setCountry($country) {
         $this->country = $country;
-    
+
         return $this;
     }
 
@@ -222,8 +215,7 @@ class Company
      *
      * @return string 
      */
-    public function getCountry()
-    {
+    public function getCountry() {
         return $this->country;
     }
 
@@ -233,10 +225,9 @@ class Company
      * @param string $city
      * @return Company
      */
-    public function setCity($city)
-    {
+    public function setCity($city) {
         $this->city = $city;
-    
+
         return $this;
     }
 
@@ -245,8 +236,7 @@ class Company
      *
      * @return string 
      */
-    public function getCity()
-    {
+    public function getCity() {
         return $this->city;
     }
 
@@ -256,10 +246,9 @@ class Company
      * @param string $region
      * @return Company
      */
-    public function setRegion($region)
-    {
+    public function setRegion($region) {
         $this->region = $region;
-    
+
         return $this;
     }
 
@@ -268,8 +257,48 @@ class Company
      *
      * @return string 
      */
-    public function getRegion()
-    {
+    public function getRegion() {
         return $this->region;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     * @return Company
+     */
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history[] = $history;
+    
+        return $this;
+    }
+
+    /**
+     * Remove history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     */
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history->removeElement($history);
+    }
+
+    /**
+     * Get history
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 }

@@ -295,7 +295,7 @@ input[type="color"],
 
 .content
 {
-	height:500px;
+	/*height:500px;*/
 	padding: 19px 29px 29px;
     background-color: #fff;
     border: 1px solid #e5e5e5;

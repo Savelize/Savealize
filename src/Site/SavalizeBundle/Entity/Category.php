@@ -49,6 +49,13 @@ class Category
      */
     private $products;
 
+     /**
+     @var \History
+     *
+     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
+     */
+    private $history;
+    
     /**
      * Get id
      *
@@ -126,5 +133,79 @@ class Category
     public function getIsDeleted()
     {
         return $this->isDeleted;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add products
+     *
+     * @param \Site\SavalizeBundle\Entity\Product $products
+     * @return Category
+     */
+    public function addProduct(\Site\SavalizeBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+    
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Site\SavalizeBundle\Entity\Product $products
+     */
+    public function removeProduct(\Site\SavalizeBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Add history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     * @return Category
+     */
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history[] = $history;
+    
+        return $this;
+    }
+
+    /**
+     * Remove history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     */
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history->removeElement($history);
+    }
+
+    /**
+     * Get history
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 }

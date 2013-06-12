@@ -564,12 +564,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // site_user_page4
         if ($pathinfo === '/usrhistory') {
-            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::usrhistoryAction',  '_route' => 'site_user_page4',);
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::historyDateSelectionAction',  '_route' => 'site_user_page4',);
         }
 
         // site_company_page10
         if ($pathinfo === '/page10') {
             return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::page10Action',  '_route' => 'site_company_page10',);
+        }
+
+        // site_savalize_viewNotifications
+        if (0 === strpos($pathinfo, '/show') && preg_match('#^/show/(?P<id>[^/]++)/(?P<page>\\d+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'site_savalize_viewNotifications')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::shownotificationAction',));
+        }
+
+        // site_savalize_displayDummyChart
+        if ($pathinfo === '/displayChart') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::displayEnteryChartPageAction',  '_route' => 'site_savalize_displayDummyChart',);
+        }
+
+        // site_savalize_ajaxtoshowchart
+        if ($pathinfo === '/usr/renderreport') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::displayDummyChartAction',  '_route' => 'site_savalize_ajaxtoshowchart',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Product
- *
  * @ORM\Table(name="product")
  * @ORM\Entity
  */
@@ -67,6 +66,13 @@ class Product
      */
     private $category;
 
+     /**
+     @var \History
+     *
+     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
+     */
+    private $history;
+    
     /**
      * Constructor
      */
@@ -209,5 +215,38 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     * @return Product
+     */
+    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history[] = $history;
+    
+        return $this;
+    }
+
+    /**
+     * Remove history
+     *
+     * @param \Site\SavalizeBundle\Entity\History $history
+     */
+    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
+    {
+        $this->history->removeElement($history);
+    }
+
+    /**
+     * Get history
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 }

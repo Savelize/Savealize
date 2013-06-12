@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UserNotification
  *
  * @ORM\Table(name="user_notification")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\UserNotificationRepository")
  */
 class UserNotification
 {
@@ -31,7 +31,7 @@ class UserNotification
     /**
      * @var \UserAccount
      *
-     * @ORM\ManyToOne(targetEntity="UserAccount")
+     * @ORM\ManyToOne(targetEntity="UserAccount", inversedBy="notifications")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })

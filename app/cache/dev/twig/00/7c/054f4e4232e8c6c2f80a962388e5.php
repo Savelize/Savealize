@@ -61,17 +61,20 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
         // line 18
         $this->displayBlock('body', $context, $blocks);
         // line 19
-        echo "        ";
-        $this->displayBlock('javascripts', $context, $blocks);
+        echo "        
+              <script src=\"";
         // line 20
-        echo "              <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
         // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
-    </body>
+    ";
+        // line 22
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 23
+        echo "        </body>
 </html>
 ";
     }
@@ -92,7 +95,7 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
     {
     }
 
-    // line 19
+    // line 22
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -109,6 +112,6 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  96 => 19,  91 => 18,  86 => 6,  80 => 5,  72 => 21,  67 => 20,  64 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  99 => 22,  94 => 18,  89 => 6,  83 => 5,  77 => 23,  75 => 22,  71 => 21,  67 => 20,  64 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 }
