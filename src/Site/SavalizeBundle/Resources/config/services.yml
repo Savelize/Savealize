@@ -1,7 +1,0 @@
-parameters:
-#    site_savalize.example.class: Site\SavalizeBundle\Example
-
-services:
-#    site_savalize.example:
-#        class: %site_savalize.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

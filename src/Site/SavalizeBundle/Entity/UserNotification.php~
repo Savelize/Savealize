@@ -15,30 +15,56 @@ class UserNotification
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=false)
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
-     * @var \UserAccount
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="notifications")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $customer;
+
+    /**
+     * Get id
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="UserAccount", inversedBy="notifications")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+=======
+     * @return integer 
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
      */
-    private $user;
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return UserNotification
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    
+        return $this;
+    }
 
+<<<<<<< HEAD
 
     /**
      * Get id
@@ -63,6 +89,8 @@ class UserNotification
         return $this;
     }
 
+=======
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
      * Get content
      *
@@ -72,6 +100,7 @@ class UserNotification
     {
         return $this->content;
     }
+<<<<<<< HEAD
 
     /**
      * Set user
@@ -96,3 +125,6 @@ class UserNotification
         return $this->user;
     }
 }
+=======
+}
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6

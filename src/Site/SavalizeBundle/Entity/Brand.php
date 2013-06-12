@@ -8,45 +8,45 @@ use Doctrine\ORM\Mapping as ORM;
  * Brand
  *
  * @ORM\Table(name="brand")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\BrandRepository")
  */
 class Brand
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30)
      */
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="confirmed", type="blob", nullable=false)
+     * @ORM\Column(name="confirmed", type="integer")
      */
     private $confirmed;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="is_deleted", type="blob", nullable=false)
+     * @ORM\Column(name="isDeleted", type="boolean")
      */
     private $isDeleted;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="brand")
+     /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Company", inversedBy="brands")
+     *@ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete = "CASCADE")
      */
+<<<<<<< HEAD
     private $product;
 
      /**
@@ -56,20 +56,21 @@ class Brand
      */
     private $history;
     
+=======
+    private $company;
+      
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", mappedBy="brand")
+    **/
+    private $productBrands;
 
     /**
      * Get id
      *
      * @return integer 
      */
+     
     public function getId()
     {
         return $this->id;
@@ -101,7 +102,7 @@ class Brand
     /**
      * Set confirmed
      *
-     * @param string $confirmed
+     * @param integer $confirmed
      * @return Brand
      */
     public function setConfirmed($confirmed)
@@ -114,7 +115,7 @@ class Brand
     /**
      * Get confirmed
      *
-     * @return string 
+     * @return integer 
      */
     public function getConfirmed()
     {
@@ -124,7 +125,7 @@ class Brand
     /**
      * Set isDeleted
      *
-     * @param string $isDeleted
+     * @param boolean $isDeleted
      * @return Brand
      */
     public function setIsDeleted($isDeleted)
@@ -137,7 +138,7 @@ class Brand
     /**
      * Get isDeleted
      *
-     * @return string 
+     * @return boolean 
      */
     public function getIsDeleted()
     {
@@ -145,36 +146,66 @@ class Brand
     }
 
     /**
-     * Add product
+     * Set company
      *
-     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @param \Site\SavalizeBundle\Entity\Company $company
      * @return Brand
      */
-    public function addProduct(\Site\SavalizeBundle\Entity\Product $product)
+    public function setCompany(\Site\SavalizeBundle\Entity\Company $company = null)
     {
-        $this->product[] = $product;
+        $this->company = $company;
     
         return $this;
     }
 
     /**
-     * Remove product
+     * Get company
      *
-     * @param \Site\SavalizeBundle\Entity\Product $product
+     * @return \Site\SavalizeBundle\Entity\Company 
      */
-    public function removeProduct(\Site\SavalizeBundle\Entity\Product $product)
+    public function getCompany()
     {
-        $this->product->removeElement($product);
+        return $this->company;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productBrands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add productBrands
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrands
+     * @return Brand
+     */
+    public function addProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrands)
+    {
+        $this->productBrands[] = $productBrands;
+    
+        return $this;
     }
 
     /**
-     * Get product
+     * Remove productBrands
+     *
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrands
+     */
+    public function removeProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrands)
+    {
+        $this->productBrands->removeElement($productBrands);
+    }
+
+    /**
+     * Get productBrands
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProduct()
+    public function getProductBrands()
     {
-        return $this->product;
+        return $this->productBrands;
     }
 
     /**

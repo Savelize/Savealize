@@ -8,45 +8,43 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\CategoryRepository")
  */
 class Category
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=30)
      */
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="confirmed", type="blob", nullable=false)
+     * @ORM\Column(name="confirmed", type="integer")
      */
     private $confirmed;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="is_deleted", type="blob", nullable=false)
+     * @ORM\Column(name="isDeleted", type="boolean")
      */
     private $isDeleted;
 
-
     /**
-     * @ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\Product" , mappedBy="category")
-     *
-     */
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\Product", mappedBy="category")
+    **/
     private $products;
 
      /**
@@ -92,7 +90,7 @@ class Category
     /**
      * Set confirmed
      *
-     * @param string $confirmed
+     * @param integer $confirmed
      * @return Category
      */
     public function setConfirmed($confirmed)
@@ -105,7 +103,7 @@ class Category
     /**
      * Get confirmed
      *
-     * @return string 
+     * @return integer 
      */
     public function getConfirmed()
     {
@@ -115,7 +113,7 @@ class Category
     /**
      * Set isDeleted
      *
-     * @param string $isDeleted
+     * @param boolean $isDeleted
      * @return Category
      */
     public function setIsDeleted($isDeleted)
@@ -128,7 +126,7 @@ class Category
     /**
      * Get isDeleted
      *
-     * @return string 
+     * @return boolean 
      */
     public function getIsDeleted()
     {
@@ -140,7 +138,10 @@ class Category
     public function __construct()
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+<<<<<<< HEAD
         $this->history = new \Doctrine\Common\Collections\ArrayCollection();
+=======
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
     
     /**
@@ -175,6 +176,7 @@ class Category
     {
         return $this->products;
     }
+<<<<<<< HEAD
 
     /**
      * Add history
@@ -208,4 +210,6 @@ class Category
     {
         return $this->history;
     }
+=======
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 }

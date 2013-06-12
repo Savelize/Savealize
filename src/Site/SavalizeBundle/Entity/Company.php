@@ -8,81 +8,87 @@ use Doctrine\ORM\Mapping as ORM;
  * Company
  *
  * @ORM\Table(name="company")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\CompanyRepository")
  */
 class Company {
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=20, nullable=false)
+     * @ORM\Column(name="username", type="string", length=30)
      */
     private $username;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="password", type="integer", nullable=false)
+     * @ORM\Column(name="password", type="string", length=20)
      */
     private $password;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=30, nullable=false)
+     * @ORM\Column(name="email", type="string", length=50)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telphone", type="string", length=15, nullable=false)
+     * @ORM\Column(name="telephone", type="string", length=11)
      */
-    private $telphone;
+    private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=20, nullable=false)
+     * @ORM\Column(name="country", type="string", length=30)
      */
     private $country;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=20, nullable=false)
+     * @ORM\Column(name="city", type="string", length=30)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=20, nullable=false)
+     * @ORM\Column(name="region", type="string", length=30)
      */
     private $region;
 
     /**
+<<<<<<< HEAD
      * @var \History
      *
      * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
      */
     private $history;
+=======
+    *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\Brand", mappedBy="Company")
+    **/
+    private $brands;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
      * Get id
@@ -138,7 +144,7 @@ class Company {
     /**
      * Set password
      *
-     * @param integer $password
+     * @param string $password
      * @return Company
      */
     public function setPassword($password) {
@@ -150,7 +156,7 @@ class Company {
     /**
      * Get password
      *
-     * @return integer 
+     * @return string 
      */
     public function getPassword() {
         return $this->password;
@@ -178,24 +184,37 @@ class Company {
     }
 
     /**
-     * Set telphone
+     * Set telephone
      *
-     * @param string $telphone
+     * @param string $telephone
      * @return Company
      */
+<<<<<<< HEAD
     public function setTelphone($telphone) {
         $this->telphone = $telphone;
 
+=======
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
         return $this;
     }
 
     /**
-     * Get telphone
+     * Get telephone
      *
      * @return string 
      */
+<<<<<<< HEAD
     public function getTelphone() {
         return $this->telphone;
+=======
+    public function getTelephone()
+    {
+        return $this->telephone;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
 
     /**
@@ -260,12 +279,16 @@ class Company {
     public function getRegion() {
         return $this->region;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
      * Constructor
      */
     public function __construct()
     {
+<<<<<<< HEAD
         $this->history = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -278,11 +301,26 @@ class Company {
     public function addHistory(\Site\SavalizeBundle\Entity\History $history)
     {
         $this->history[] = $history;
+=======
+        $this->brands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add brands
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brands
+     * @return Company
+     */
+    public function addBrand(\Site\SavalizeBundle\Entity\Brand $brands)
+    {
+        $this->brands[] = $brands;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Remove history
      *
      * @param \Site\SavalizeBundle\Entity\History $history
@@ -300,5 +338,24 @@ class Company {
     public function getHistory()
     {
         return $this->history;
+=======
+     * Remove brands
+     *
+     * @param \Site\SavalizeBundle\Entity\Brand $brands
+     */
+    public function removeBrand(\Site\SavalizeBundle\Entity\Brand $brands)
+    {
+        $this->brands->removeElement($brands);
+    }
+
+    /**
+     * Get brands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBrands()
+    {
+        return $this->brands;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
 }

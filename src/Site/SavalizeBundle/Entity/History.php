@@ -15,47 +15,50 @@ class History
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
-     * @var \DateTime
+     * @var integer
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $date;
+    private $quantity;
 
     /**
-     * @var \Brand
+     * @var \DateTime
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Brand" , inversedBy="brands")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
      * })
      */
     private $brands;
-
-    /**
-     * @var \Category
-     *
-     * @ORM\ManyToOne(targetEntity="Category" , inversedBy="category")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
+=======
+     * @ORM\Column(name="baughtAt", type="datetime")
      */
-    private $category;
+    private $baughtAt;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", inversedBy="histories")
+     *@ORM\JoinColumn(name="productBrand_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $productBrand;
+
+    /**
+<<<<<<< HEAD
      * @var \Company
      *
      * @ORM\ManyToOne(targetEntity="Company" , inversedBy="companies")
@@ -86,6 +89,12 @@ class History
     private $products;
 
 
+=======
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="histories")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $customer;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
      * Get id
@@ -121,140 +130,99 @@ class History
     }
 
     /**
-     * Set date
+     * Set quantity
      *
-     * @param \DateTime $date
+     * @param integer $quantity
      * @return History
      */
-    public function setDate($date)
+    public function setQuantity($quantity)
     {
-        $this->date = $date;
+        $this->quantity = $quantity;
     
         return $this;
     }
 
     /**
-     * Get date
+     * Get quantity
+     *
+     * @return integer 
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set baughtAt
+     *
+     * @param \DateTime $baughtAt
+     * @return History
+     */
+    public function setBaughtAt($baughtAt)
+    {
+        $this->baughtAt = $baughtAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get baughtAt
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getBaughtAt()
     {
-        return $this->date;
+        return $this->baughtAt;
     }
 
     /**
-     * Set brand
+     * Set productBrand
      *
-     * @param \Site\SavalizeBundle\Entity\Brand $brand
+     * @param \Site\SavalizeBundle\Entity\ProductBrand $productBrand
      * @return History
      */
-    public function setBrand(\Site\SavalizeBundle\Entity\Brand $brand = null)
+    public function setProductBrand(\Site\SavalizeBundle\Entity\ProductBrand $productBrand = null)
     {
-        $this->brand = $brand;
+        $this->productBrand = $productBrand;
     
         return $this;
     }
 
     /**
-     * Get brand
+     * Get productBrand
      *
-     * @return \Site\SavalizeBundle\Entity\Brand 
+     * @return \Site\SavalizeBundle\Entity\ProductBrand 
      */
-    public function getBrand()
+    public function getProductBrand()
     {
-        return $this->brand;
+        return $this->productBrand;
     }
 
     /**
-     * Set category
+     * Set customer
      *
-     * @param \Site\SavalizeBundle\Entity\Category $category
+     * @param \Site\SavalizeBundle\Entity\Customer $customer
      * @return History
      */
-    public function setCategory(\Site\SavalizeBundle\Entity\Category $category = null)
+    public function setCustomer(\Site\SavalizeBundle\Entity\Customer $customer = null)
     {
-        $this->category = $category;
-    
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Site\SavalizeBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set company
-     *
-     * @param \Site\SavalizeBundle\Entity\Company $company
-     * @return History
-     */
-    public function setCompany(\Site\SavalizeBundle\Entity\Company $company = null)
-    {
-        $this->company = $company;
-    
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Site\SavalizeBundle\Entity\Company 
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
-     * @return History
-     */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set product
-     *
-     * @param \Site\SavalizeBundle\Entity\Product $product
-     * @return History
-     */
-    public function setProduct(\Site\SavalizeBundle\Entity\Product $product = null)
-    {
+<<<<<<< HEAD
         $this->products = $product;
+=======
+        $this->customer = $customer;
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     
         return $this;
     }
 
     /**
-     * Get product
+     * Get customer
      *
-     * @return \Site\SavalizeBundle\Entity\Product 
+     * @return \Site\SavalizeBundle\Entity\Customer 
      */
-    public function getProduct()
+    public function getCustomer()
     {
+<<<<<<< HEAD
         return $this->products;
     }
     
@@ -327,4 +295,8 @@ class History
     {
         return $this->products;
     }
+=======
+        return $this->customer;
+    }
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 }

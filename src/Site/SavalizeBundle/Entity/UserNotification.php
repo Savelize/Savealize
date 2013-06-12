@@ -15,30 +15,33 @@ class UserNotification
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=false)
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
 
     /**
+<<<<<<< HEAD
      * @var \UserAccount
      *
      * @ORM\ManyToOne(targetEntity="UserAccount", inversedBy="notifications")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+=======
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="notifications")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
      */
-    private $user;
-
-
+    private $customer;
 
     /**
      * Get id
@@ -74,25 +77,25 @@ class UserNotification
     }
 
     /**
-     * Set user
+     * Set customer
      *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
+     * @param \Site\SavalizeBundle\Entity\Customer $customer
      * @return UserNotification
      */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
+    public function setCustomer(\Site\SavalizeBundle\Entity\Customer $customer = null)
     {
-        $this->user = $user;
+        $this->customer = $customer;
     
         return $this;
     }
 
     /**
-     * Get user
+     * Get customer
      *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
+     * @return \Site\SavalizeBundle\Entity\Customer 
      */
-    public function getUser()
+    public function getCustomer()
     {
-        return $this->user;
+        return $this->customer;
     }
 }

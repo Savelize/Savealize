@@ -15,77 +15,156 @@ class History
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="integer", nullable=false)
+     * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
-     * @var \DateTime
+     * @var integer
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $date;
+    private $quantity;
 
     /**
-     * @var \Brand
+     * @var \DateTime
      *
+     * @ORM\Column(name="baughtAt", type="datetime")
+     */
+    private $baughtAt;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", inversedBy="histories")
+     *@ORM\JoinColumn(name="productBrand_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $productBrand;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="histories")
+     *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+     */
+    private $customer;
+
+    /**
+     * Get id
+     *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Brand" , inversedBy="brands")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
      * })
      */
     private $brands;
+=======
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
-     * @var \Category
+     * Set price
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Category" , inversedBy="category")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
+=======
+     * @param integer $price
+     * @return History
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
      */
-    private $category;
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
 
     /**
-     * @var \Company
+     * Get price
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Company" , inversedBy="companies")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      * })
      */
     private $companies;
+=======
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
-     * @var \UserAccount
+     * Set quantity
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="UserAccount" , inversedBy="user_account")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+=======
+     * @param integer $quantity
+     * @return History
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
      */
-    private $user;
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    
+        return $this;
+    }
 
     /**
-     * @var \Product
+     * Get quantity
      *
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Product" , inversedBy="product")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      * })
      */
     private $products;
+=======
+     * @return integer 
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
+    /**
+     * Set baughtAt
+     *
+     * @param \DateTime $baughtAt
+     * @return History
+     */
+    public function setBaughtAt($baughtAt)
+    {
+        $this->baughtAt = $baughtAt;
+    
+        return $this;
+    }
 
+<<<<<<< HEAD
 
     /**
      * Get id
@@ -328,3 +407,15 @@ class History
         return $this->products;
     }
 }
+=======
+    /**
+     * Get baughtAt
+     *
+     * @return \DateTime 
+     */
+    public function getBaughtAt()
+    {
+        return $this->baughtAt;
+    }
+}
+>>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
