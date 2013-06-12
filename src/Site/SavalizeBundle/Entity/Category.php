@@ -47,13 +47,6 @@ class Category
     **/
     private $products;
 
-     /**
-     @var \History
-     *
-     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
-     */
-    private $history;
-    
     /**
      * Get id
      *
@@ -138,10 +131,6 @@ class Category
     public function __construct()
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-<<<<<<< HEAD
-        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
-=======
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
     
     /**
@@ -176,40 +165,4 @@ class Category
     {
         return $this->products;
     }
-<<<<<<< HEAD
-
-    /**
-     * Add history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     * @return Category
-     */
-    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history[] = $history;
-    
-        return $this;
-    }
-
-    /**
-     * Remove history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     */
-    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
-    }
-=======
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 }

@@ -29,17 +29,8 @@ class UserNotification
     private $content;
 
     /**
-<<<<<<< HEAD
-     * @var \UserAccount
-     *
-     * @ORM\ManyToOne(targetEntity="UserAccount", inversedBy="notifications")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-=======
      *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="notifications")
      *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
      */
     private $customer;
 

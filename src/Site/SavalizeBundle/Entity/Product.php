@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Product
+ *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\ProductRepository")
  */
@@ -37,7 +38,7 @@ class Product
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isDeleted", type="boolean")
+     * @ORM\Column(name="is_deleted", type="boolean")
      */
     private $isDeleted;
 
@@ -46,24 +47,6 @@ class Product
      *@ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $category;
-<<<<<<< HEAD
-
-     /**
-     @var \History
-     *
-     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
-     */
-    private $history;
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->brand = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-=======
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     
     /**
     *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", mappedBy="product")
@@ -211,38 +194,5 @@ class Product
     public function getProductBrands()
     {
         return $this->productBrands;
-    }
-
-    /**
-     * Add history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     * @return Product
-     */
-    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history[] = $history;
-    
-        return $this;
-    }
-
-    /**
-     * Remove history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     */
-    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
     }
 }

@@ -51,6 +51,7 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
         // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/main.css"), "html", null, true);
         echo "\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <!-- HTML5 shim for IE backwards compatibility -->
         <!--[if lt IE 9]>
           <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>
@@ -58,23 +59,28 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
     </head>
     <body>
         ";
-        // line 18
-        $this->displayBlock('body', $context, $blocks);
         // line 19
-        echo "        
-              <script src=\"";
+        $this->displayBlock('body', $context, $blocks);
         // line 20
+        echo "
+        
+              <script src=\"";
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
-        // line 21
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     ";
-        // line 22
+        // line 24
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 23
+        // line 25
         echo "        </body>
+
+        
+
+
 </html>
 ";
     }
@@ -90,12 +96,12 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
     {
     }
 
-    // line 18
+    // line 19
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 22
+    // line 24
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -112,6 +118,6 @@ class __TwigTemplate_007c054f4e4232e8c6c2f80a962388e5 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  99 => 22,  94 => 18,  89 => 6,  83 => 5,  77 => 23,  75 => 22,  71 => 21,  67 => 20,  64 => 19,  62 => 18,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  105 => 24,  95 => 6,  89 => 5,  79 => 25,  77 => 24,  73 => 23,  69 => 22,  65 => 20,  63 => 19,  52 => 11,  48 => 10,  44 => 9,  35 => 7,  33 => 6,  29 => 5,  23 => 1,  136 => 78,  131 => 77,  128 => 76,  122 => 73,  118 => 72,  115 => 71,  108 => 69,  104 => 67,  100 => 19,  97 => 65,  93 => 64,  81 => 54,  50 => 11,  47 => 10,  40 => 8,  37 => 4,  31 => 2,);
     }
 }

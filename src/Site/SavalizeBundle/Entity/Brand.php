@@ -46,20 +46,8 @@ class Brand
      *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Company", inversedBy="brands")
      *@ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete = "CASCADE")
      */
-<<<<<<< HEAD
-    private $product;
-
-     /**
-     * @var \History
-     *
-     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
-     */
-    private $history;
-    
-=======
     private $company;
       
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
     *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\ProductBrand", mappedBy="brand")
     **/
@@ -206,38 +194,5 @@ class Brand
     public function getProductBrands()
     {
         return $this->productBrands;
-    }
-
-    /**
-     * Add history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     * @return Brand
-     */
-    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history[] = $history;
-    
-        return $this;
-    }
-
-    /**
-     * Remove history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     */
-    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
     }
 }

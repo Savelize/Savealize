@@ -29,46 +29,16 @@ class UserNotification
     private $content;
 
     /**
+
      *@ORM\ManyToOne(targetEntity="\Site\SavalizeBundle\Entity\Customer", inversedBy="notifications")
      *@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete = "CASCADE")
+
      */
     private $customer;
 
     /**
      * Get id
      *
-<<<<<<< HEAD
-     * @ORM\ManyToOne(targetEntity="UserAccount", inversedBy="notifications")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-=======
-     * @return integer 
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return UserNotification
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-    
-        return $this;
-    }
-
-<<<<<<< HEAD
-
-    /**
-     * Get id
-     *
      * @return integer 
      */
     public function getId()
@@ -89,8 +59,6 @@ class UserNotification
         return $this;
     }
 
-=======
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
      * Get content
      *
@@ -100,31 +68,27 @@ class UserNotification
     {
         return $this->content;
     }
-<<<<<<< HEAD
 
     /**
-     * Set user
+     * Set customer
      *
-     * @param \Site\SavalizeBundle\Entity\UserAccount $user
+     * @param \Site\SavalizeBundle\Entity\Customer $customer
      * @return UserNotification
      */
-    public function setUser(\Site\SavalizeBundle\Entity\UserAccount $user = null)
+    public function setCustomer(\Site\SavalizeBundle\Entity\Customer $customer = null)
     {
-        $this->user = $user;
+        $this->customer = $customer;
     
         return $this;
     }
 
     /**
-     * Get user
+     * Get customer
      *
-     * @return \Site\SavalizeBundle\Entity\UserAccount 
+     * @return \Site\SavalizeBundle\Entity\Customer 
      */
-    public function getUser()
+    public function getCustomer()
     {
-        return $this->user;
+        return $this->customer;
     }
 }
-=======
-}
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="Site\SavalizeBundle\Entity\CompanyRepository")
  */
-class Company {
-
+class Company
+{
     /**
      * @var integer
      *
@@ -78,24 +78,17 @@ class Company {
     private $region;
 
     /**
-<<<<<<< HEAD
-     * @var \History
-     *
-     * @ORM\OneToMany(targetEntity="History" , mappedBy="history")
-     */
-    private $history;
-=======
     *@ORM\OneToMany(targetEntity="\Site\SavalizeBundle\Entity\Brand", mappedBy="Company")
     **/
     private $brands;
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -105,9 +98,10 @@ class Company {
      * @param string $name
      * @return Company
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
-
+    
         return $this;
     }
 
@@ -116,7 +110,8 @@ class Company {
      *
      * @return string 
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -126,9 +121,10 @@ class Company {
      * @param string $username
      * @return Company
      */
-    public function setUsername($username) {
+    public function setUsername($username)
+    {
         $this->username = $username;
-
+    
         return $this;
     }
 
@@ -137,7 +133,8 @@ class Company {
      *
      * @return string 
      */
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
 
@@ -147,9 +144,10 @@ class Company {
      * @param string $password
      * @return Company
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
-
+    
         return $this;
     }
 
@@ -158,7 +156,8 @@ class Company {
      *
      * @return string 
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
@@ -168,9 +167,10 @@ class Company {
      * @param string $email
      * @return Company
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
-
+    
         return $this;
     }
 
@@ -179,7 +179,8 @@ class Company {
      *
      * @return string 
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -189,16 +190,10 @@ class Company {
      * @param string $telephone
      * @return Company
      */
-<<<<<<< HEAD
-    public function setTelphone($telphone) {
-        $this->telphone = $telphone;
-
-=======
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
     
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
         return $this;
     }
 
@@ -207,14 +202,9 @@ class Company {
      *
      * @return string 
      */
-<<<<<<< HEAD
-    public function getTelphone() {
-        return $this->telphone;
-=======
     public function getTelephone()
     {
         return $this->telephone;
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
 
     /**
@@ -223,9 +213,10 @@ class Company {
      * @param string $country
      * @return Company
      */
-    public function setCountry($country) {
+    public function setCountry($country)
+    {
         $this->country = $country;
-
+    
         return $this;
     }
 
@@ -234,7 +225,8 @@ class Company {
      *
      * @return string 
      */
-    public function getCountry() {
+    public function getCountry()
+    {
         return $this->country;
     }
 
@@ -244,9 +236,10 @@ class Company {
      * @param string $city
      * @return Company
      */
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->city = $city;
-
+    
         return $this;
     }
 
@@ -255,7 +248,8 @@ class Company {
      *
      * @return string 
      */
-    public function getCity() {
+    public function getCity()
+    {
         return $this->city;
     }
 
@@ -265,9 +259,10 @@ class Company {
      * @param string $region
      * @return Company
      */
-    public function setRegion($region) {
+    public function setRegion($region)
+    {
         $this->region = $region;
-
+    
         return $this;
     }
 
@@ -276,32 +271,15 @@ class Company {
      *
      * @return string 
      */
-    public function getRegion() {
+    public function getRegion()
+    {
         return $this->region;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     /**
      * Constructor
      */
     public function __construct()
     {
-<<<<<<< HEAD
-        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Add history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     * @return Company
-     */
-    public function addHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history[] = $history;
-=======
         $this->brands = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -314,31 +292,11 @@ class Company {
     public function addBrand(\Site\SavalizeBundle\Entity\Brand $brands)
     {
         $this->brands[] = $brands;
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     
         return $this;
     }
 
     /**
-<<<<<<< HEAD
-     * Remove history
-     *
-     * @param \Site\SavalizeBundle\Entity\History $history
-     */
-    public function removeHistory(\Site\SavalizeBundle\Entity\History $history)
-    {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
-=======
      * Remove brands
      *
      * @param \Site\SavalizeBundle\Entity\Brand $brands
@@ -356,6 +314,5 @@ class Company {
     public function getBrands()
     {
         return $this->brands;
->>>>>>> d1a447030e03cf700551546fedb9f196aae9e4d6
     }
 }

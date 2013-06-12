@@ -133,426 +133,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/brand')) {
-            // brand
-            if (rtrim($pathinfo, '/') === '/brand') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'brand');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::indexAction',  '_route' => 'brand',);
-            }
-
-            // brand_show
-            if (preg_match('#^/brand/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'brand_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::showAction',));
-            }
-
-            // brand_new
-            if ($pathinfo === '/brand/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::newAction',  '_route' => 'brand_new',);
-            }
-
-            // brand_create
-            if ($pathinfo === '/brand/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_brand_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::createAction',  '_route' => 'brand_create',);
-            }
-            not_brand_create:
-
-            // brand_edit
-            if (preg_match('#^/brand/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'brand_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::editAction',));
-            }
-
-            // brand_update
-            if (preg_match('#^/brand/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_brand_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'brand_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::updateAction',));
-            }
-            not_brand_update:
-
-            // brand_delete
-            if (preg_match('#^/brand/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_brand_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'brand_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\BrandController::deleteAction',));
-            }
-            not_brand_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/category')) {
-            // category
-            if (rtrim($pathinfo, '/') === '/category') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'category');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::indexAction',  '_route' => 'category',);
-            }
-
-            // category_show
-            if (preg_match('#^/category/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::showAction',));
-            }
-
-            // category_new
-            if ($pathinfo === '/category/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::newAction',  '_route' => 'category_new',);
-            }
-
-            // category_create
-            if ($pathinfo === '/category/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_category_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::createAction',  '_route' => 'category_create',);
-            }
-            not_category_create:
-
-            // category_edit
-            if (preg_match('#^/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::editAction',));
-            }
-
-            // category_update
-            if (preg_match('#^/category/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_category_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::updateAction',));
-            }
-            not_category_update:
-
-            // category_delete
-            if (preg_match('#^/category/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_category_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'category_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CategoryController::deleteAction',));
-            }
-            not_category_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/subcategory')) {
-            // subcategory
-            if (rtrim($pathinfo, '/') === '/subcategory') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'subcategory');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::indexAction',  '_route' => 'subcategory',);
-            }
-
-            // subcategory_show
-            if (preg_match('#^/subcategory/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'subcategory_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::showAction',));
-            }
-
-            // subcategory_new
-            if ($pathinfo === '/subcategory/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::newAction',  '_route' => 'subcategory_new',);
-            }
-
-            // subcategory_create
-            if ($pathinfo === '/subcategory/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_subcategory_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::createAction',  '_route' => 'subcategory_create',);
-            }
-            not_subcategory_create:
-
-            // subcategory_edit
-            if (preg_match('#^/subcategory/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'subcategory_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::editAction',));
-            }
-
-            // subcategory_update
-            if (preg_match('#^/subcategory/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_subcategory_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'subcategory_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::updateAction',));
-            }
-            not_subcategory_update:
-
-            // subcategory_delete
-            if (preg_match('#^/subcategory/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_subcategory_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'subcategory_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\SubCategoryController::deleteAction',));
-            }
-            not_subcategory_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/company')) {
-            // company
-            if (rtrim($pathinfo, '/') === '/company') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'company');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::indexAction',  '_route' => 'company',);
-            }
-
-            // company_show
-            if (preg_match('#^/company/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'company_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::showAction',));
-            }
-
-            // company_new
-            if ($pathinfo === '/company/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::newAction',  '_route' => 'company_new',);
-            }
-
-            // company_create
-            if ($pathinfo === '/company/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_company_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::createAction',  '_route' => 'company_create',);
-            }
-            not_company_create:
-
-            // company_edit
-            if (preg_match('#^/company/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'company_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::editAction',));
-            }
-
-            // company_update
-            if (preg_match('#^/company/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_company_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'company_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::updateAction',));
-            }
-            not_company_update:
-
-            // company_delete
-            if (preg_match('#^/company/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_company_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'company_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::deleteAction',));
-            }
-            not_company_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/product')) {
-            // product
-            if (rtrim($pathinfo, '/') === '/product') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'product');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::indexAction',  '_route' => 'product',);
-            }
-
-            // product_show
-            if (preg_match('#^/product/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'product_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::showAction',));
-            }
-
-            // product_new
-            if ($pathinfo === '/product/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::newAction',  '_route' => 'product_new',);
-            }
-
-            // product_create
-            if ($pathinfo === '/product/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_product_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::createAction',  '_route' => 'product_create',);
-            }
-            not_product_create:
-
-            // product_edit
-            if (preg_match('#^/product/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'product_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::editAction',));
-            }
-
-            // product_update
-            if (preg_match('#^/product/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_product_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'product_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::updateAction',));
-            }
-            not_product_update:
-
-            // product_delete
-            if (preg_match('#^/product/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_product_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'product_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\ProductController::deleteAction',));
-            }
-            not_product_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/useraccount')) {
-            // useraccount
-            if (rtrim($pathinfo, '/') === '/useraccount') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'useraccount');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::indexAction',  '_route' => 'useraccount',);
-            }
-
-            // useraccount_show
-            if (preg_match('#^/useraccount/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'useraccount_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::showAction',));
-            }
-
-            // useraccount_new
-            if ($pathinfo === '/useraccount/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::newAction',  '_route' => 'useraccount_new',);
-            }
-
-            // useraccount_create
-            if ($pathinfo === '/useraccount/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_useraccount_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::createAction',  '_route' => 'useraccount_create',);
-            }
-            not_useraccount_create:
-
-            // useraccount_edit
-            if (preg_match('#^/useraccount/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'useraccount_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::editAction',));
-            }
-
-            // useraccount_update
-            if (preg_match('#^/useraccount/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_useraccount_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'useraccount_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::updateAction',));
-            }
-            not_useraccount_update:
-
-            // useraccount_delete
-            if (preg_match('#^/useraccount/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_useraccount_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'useraccount_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::deleteAction',));
-            }
-            not_useraccount_delete:
-
-        }
-
-        if (0 === strpos($pathinfo, '/adminaccount')) {
-            // adminaccount
-            if (rtrim($pathinfo, '/') === '/adminaccount') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'adminaccount');
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::indexAction',  '_route' => 'adminaccount',);
-            }
-
-            // adminaccount_show
-            if (preg_match('#^/adminaccount/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminaccount_show')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::showAction',));
-            }
-
-            // adminaccount_new
-            if ($pathinfo === '/adminaccount/new') {
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::newAction',  '_route' => 'adminaccount_new',);
-            }
-
-            // adminaccount_create
-            if ($pathinfo === '/adminaccount/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_adminaccount_create;
-                }
-
-                return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::createAction',  '_route' => 'adminaccount_create',);
-            }
-            not_adminaccount_create:
-
-            // adminaccount_edit
-            if (preg_match('#^/adminaccount/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminaccount_edit')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::editAction',));
-            }
-
-            // adminaccount_update
-            if (preg_match('#^/adminaccount/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_adminaccount_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminaccount_update')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::updateAction',));
-            }
-            not_adminaccount_update:
-
-            // adminaccount_delete
-            if (preg_match('#^/adminaccount/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_adminaccount_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'adminaccount_delete')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\AdminAccountController::deleteAction',));
-            }
-            not_adminaccount_delete:
-
-        }
-
         // site_savalize_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -564,27 +144,52 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // site_user_page4
         if ($pathinfo === '/usrhistory') {
-            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::historyDateSelectionAction',  '_route' => 'site_user_page4',);
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::historyDateSelectionAction',  '_route' => 'site_user_page4',);
         }
 
         // site_company_page10
         if ($pathinfo === '/page10') {
-            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CompanyController::page10Action',  '_route' => 'site_company_page10',);
+            return array (  '_controller' => 'SiteSavalizeBundle:Company:page10',  '_route' => 'site_company_page10',);
         }
 
         // site_savalize_viewNotifications
         if (0 === strpos($pathinfo, '/show') && preg_match('#^/show/(?P<id>[^/]++)/(?P<page>\\d+)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'site_savalize_viewNotifications')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::shownotificationAction',));
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'site_savalize_viewNotifications')), array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::shownotificationAction',));
         }
 
         // site_savalize_displayDummyChart
         if ($pathinfo === '/displayChart') {
-            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::displayEnteryChartPageAction',  '_route' => 'site_savalize_displayDummyChart',);
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::displayEnteryChartPageAction',  '_route' => 'site_savalize_displayDummyChart',);
         }
 
         // site_savalize_ajaxtoshowchart
         if ($pathinfo === '/usr/renderreport') {
-            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\UserAccountController::displayDummyChartAction',  '_route' => 'site_savalize_ajaxtoshowchart',);
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::displayDummyChartAction',  '_route' => 'site_savalize_ajaxtoshowchart',);
+        }
+
+        // SiteSavalizeBundle_reviews
+        if ($pathinfo === '/reviews/show') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\DefaultController::showReviewsAction',  '_route' => 'SiteSavalizeBundle_reviews',);
+        }
+
+        // contact_us
+        if ($pathinfo === '/user/contact') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::contactAction',  '_route' => 'contact_us',);
+        }
+
+        // contact_us_company
+        if ($pathinfo === '/company/contact') {
+            return array (  '_controller' => 'SiteSavalizeBundle:Company:contact',  '_route' => 'contact_us_company',);
+        }
+
+        // site_personal_user_settings
+        if ($pathinfo === '/personalusersettings') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::personalusersettingsAction',  '_route' => 'site_personal_user_settings',);
+        }
+
+        // site_category_user_settings
+        if ($pathinfo === '/categoryusersettings') {
+            return array (  '_controller' => 'Site\\SavalizeBundle\\Controller\\CustomerController::categoryusersettingsAction',  '_route' => 'site_category_user_settings',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
